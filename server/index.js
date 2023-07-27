@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://Praveenaws:<RK3xDvMANtRBAp57>@mern.ximp82z.mongodb.net/mern?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://Praveenaws:<RK3xDvMANtRBAp57>@mern.ximp82z.mongodb.net/?retryWrites=true&w=majority')
 
 app.get("/", (req, res) => {
     ItemsModel.find({})
