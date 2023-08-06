@@ -7,7 +7,16 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://Praveenaws:<RK3xDvMANtRBAp57>@mern.ximp82z.mongodb.net/?retryWrites=true&w=majority')
+const MONGODB_URI = 'mongodb+srv://mern-ren:lcLqzeaLshgrQNw6@mern-ren.g8tmbik.mongodb.net/mernstack?retryWrites=true&w=majority'
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "MongoDB connection error:"));
+  db.once("open", () => {
+    console.log("Connected to the database");
+  });
 
 app.get("/", (req, res) => {
     ItemsModel.find({})
